@@ -5,13 +5,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const prisma = new PrismaClient();
 
-// app.get("/", async (req, res) => {
-//     const user = await prisma.user.findMany()
-//     res.json(user)
-// });
 
 app.get("/", async (req, res) => {
-  res.json({ msg: "ok" });
+    const user = await prisma.user.findMany()
+    res.json(user)
+});
+
+app.get("/api", (req, res) => {
+    res.json({msg: "ok"})
 });
 
 app.listen(PORT, () => {
